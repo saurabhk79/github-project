@@ -11,7 +11,7 @@ const app = express();
 app.use(express.json())
 app.use(cors())
 
-let db = new Database(dbPath, (err) => {
+export const db = new Database(dbPath, (err) => {
   if (err) {
     console.error(err.message);
     
