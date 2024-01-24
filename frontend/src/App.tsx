@@ -8,7 +8,7 @@ const App: React.FC = () => {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Search />}  />
-          
+          <Route path="/user" />
         </Routes>
       </BrowserRouter>
     </div>
