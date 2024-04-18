@@ -1,4 +1,4 @@
-export interface User {
+export interface UserInterface {
   username: string;
   id: string;
   avatar_url?: string;
@@ -10,8 +10,8 @@ export interface User {
   email?: string;
   bio?: string;
   public_repos?: number;
-  followers?: number;
-  following?: number;
+  followers?: [UserInterface];
+  following?: [UserInterface];
   created_at?: Date;
   updated_at?: Date;
 }

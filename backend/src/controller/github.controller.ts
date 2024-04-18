@@ -10,7 +10,7 @@ import {
 } from "../services/github.services.ts";
 import { Filters } from "../interface/filters.interface.ts";
 import { SortOptions } from "../interface/sortOptions.interface.ts";
-import { User } from "../interface/user.interface.ts";
+import { UserInterface } from "../interface/user.interface.ts";
 
 export const saveUser = async (req: Request, res: Response) => {
   try {
@@ -25,7 +25,7 @@ export const saveUser = async (req: Request, res: Response) => {
     const data = await response.json();
 
     console.log(data);
-    const userData : User = {
+    const userData : UserInterface = {
       username: data.login,
       id: data.id,
       avatar_url: data.avatar_url,

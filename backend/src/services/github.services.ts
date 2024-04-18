@@ -1,4 +1,6 @@
-import { User } from "../interface/user.interface";
+import { Filters } from "../interface/filters.interface";
+import { UserInterface } from "../interface/user.interface";
+import User from "../models/User";
 
 export const findUser = async (username: string) => {
   try {
@@ -10,9 +12,9 @@ export const findUser = async (username: string) => {
   }
 };
 
-export const save = async (userData: User) => {
+export const save = async (userData: UserInterface) => {
   try {
-    const availUser = await User(userData);
+    const availUser = await User.create(userData);
     availUser.save();
 
     return availUser;
@@ -23,35 +25,35 @@ export const save = async (userData: User) => {
 
 export const getSetMutual = async (
   username: string,
-  followers: [User],
-  following: [User]
+  followers: [UserInterface],
+  following: [UserInterface]
 ) => {
   try {
     const mutuals = followers.filter((item1) =>
       following.some((item2) => item1.id === item2.id)
     );
 
-    const user = await User.findOne(username);
+    const user = await User.findOne({username});
 
-    if (user && user.friends.length > 0) {
-      const mutualFriends = await User.find({
-        username: { $in: user.mutualFriends },
-      });
-      return mutualFriends;
-    } else {
-      if (mutuals.length > 0) {
-        user.mutualFriends = mutuals.map((mutual) => mutual.id);
-        await user.save();
-      }
+    // if (user && user.friends.length > 0) {
+    //   const mutualFriends = await User.find({
+    //     username: { $in: user.mutualFriends },
+    //   });
+    //   return mutualFriends;
+    // } else {
+    //   if (mutuals.length > 0) {
+    //     user.mutualFriends = mutuals.map((mutual) => mutual.id);
+    //     await user.save();
+    //   }
 
       return mutuals;
-    }
+    // }
   } catch (error) {
     throw error;
   }
 };
 
-export const search = async (filters) => {
+export const search = async (filters : Filters) => {
   try {
     const users = await User.find(filters);
 
@@ -71,7 +73,7 @@ export const deletes = async (username) => {
   }
 };
 
-export const update = async (username, updateData) => {
+export const update = async (username:string, updateData) => {
   try {
     const updatedUser = await User.findOneAndUpdate(
       { username },
