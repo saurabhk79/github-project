@@ -3,10 +3,10 @@
     "module": "commonjs",
     "esModuleInterop": true,
     "target": "es6",
-    "moduleResolution": "node",
+    "noEmit": true,
     "sourceMap": true,
     "outDir": "dist",
-    // "allowImportingTsExtensions": true
+    "allowImportingTsExtensions": true
   },
   "lib": ["es2015"]
 }

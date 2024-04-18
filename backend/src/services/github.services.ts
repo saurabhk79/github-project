@@ -1,4 +1,6 @@
-export const findUser = async (username) => {
+import { User } from "../interface/user.interface";
+
+export const findUser = async (username: string) => {
   try {
     const availUser = await User.findOne({ username });
 
@@ -8,7 +10,7 @@ export const findUser = async (username) => {
   }
 };
 
-export const save = async (userData) => {
+export const save = async (userData: User) => {
   try {
     const availUser = await User(userData);
     availUser.save();
@@ -19,7 +21,11 @@ export const save = async (userData) => {
   }
 };
 
-export const getSetMutual = async (username, followers, following) => {
+export const getSetMutual = async (
+  username: string,
+  followers: [User],
+  following: [User]
+) => {
   try {
     const mutuals = followers.filter((item1) =>
       following.some((item2) => item1.id === item2.id)

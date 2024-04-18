@@ -8,6 +8,9 @@ import {
   search,
   update,
 } from "../services/github.services.ts";
+import { Filters } from "../interface/filters.interface.ts";
+import { SortOptions } from "../interface/sortOptions.interface.ts";
+import { User } from "../interface/user.interface.ts";
 
 export const saveUser = async (req: Request, res: Response) => {
   try {
@@ -22,7 +25,7 @@ export const saveUser = async (req: Request, res: Response) => {
     const data = await response.json();
 
     console.log(data);
-    const userData = {
+    const userData : User = {
       username: data.login,
       id: data.id,
       avatar_url: data.avatar_url,
@@ -76,13 +79,13 @@ export const findMutuals = async (req: Request, res: Response) => {
 
 export const searchUsers = async (req: Request, res: Response) => {
   try {
-    const { username, location, type, company } = req.query;
-    const filters = {};
+    const { username, location, type, company }  = req.query;
+    const filters : Filters = {};
 
-    if (username) filters.username = username;
-    if (location) filters.location = location;
-    if (type) filters.type = type;
-    if (company) filters.company = company;
+    if (username && typeof username === "string") filters.username = username;
+    if (location && typeof location === "string") filters.location = location;
+    if (type && typeof type === "string") filters.type = type;
+    if (company && typeof company === "string") filters.company = company;
 
     const users = await search(filters);
 
@@ -109,14 +112,14 @@ export const deleteUser = async (req: Request, res: Response) => {
 
 export const updateUser = async (req: Request, res: Response) => {
   try {
-    const { username } = req.params;
+    const username : string = req.params.username as string;
     const updateData = req.body;
 
     const doesUserExists = await findUser(username);
     if (!doesUserExists)
       return res.status(403).json({ message: "User does not exists!" });
 
-    const user = await updateUser(username, updateData);
+    const user = await update(username, updateData);
     return res.status(201).json(user);
   } catch (error) {
     return res.json({ message: error.message });
@@ -127,7 +130,7 @@ export const listUser = async (req: Request, res: Response) => {
   try {
     const { sortBy } = req.query;
 
-    const sortOptions = {};
+    const sortOptions : SortOptions = {};
 
     if (sortBy) {
       if (sortBy === "public_repos") {
