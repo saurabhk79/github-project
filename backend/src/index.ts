@@ -4,7 +4,7 @@ import path from 'path';
 import cors from "cors";
 import {router} from "./routes";
 
-const dbPath = path.resolve(__dirname, 'db', 'main.db');
+const dbPath = path.resolve(__dirname, 'db', 'db.sqlite3');
 
 const app = express();
 
@@ -12,10 +12,8 @@ app.use(express.json())
 app.use(cors())
 
 export const db = new Database(dbPath, (err) => {
-  if (err) {
-    console.error(err.message);
-    
-  } else console.log("Connected to the database.");
+  if (err) console.error(err.message);  
+  else console.log("Connected to the database.");
 });
 
 app.get("/", async (req: Request, res: Response) => {
@@ -24,7 +22,7 @@ app.get("/", async (req: Request, res: Response) => {
 });
 
 app.use("/user", router)
-const port = 8080;
+const port = process.env.PORT || 8080;
 
 app.listen(port, (): void => {
   console.log(`App is listening at http://localhost:${port}`);
