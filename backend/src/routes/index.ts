@@ -1,11 +1,11 @@
 import { Router } from "express";
 import {
-  deleteUser,
-  findMutuals,
-  listUser,
-  saveUser,
-  searchUsers,
-  updateUser,
+    deleteUser,
+    findMutuals,
+    listUser,
+    saveUser,
+    searchUsers,
+    updateUser,
 } from "../controller/github.controller.ts";
 
 export const router = Router();
