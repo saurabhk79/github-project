@@ -1,0 +1,36 @@
+.userInfo {
+  min-height: 100vh;
+  max-width: 720px;
+  margin: auto;
+  margin-bottom: 24px;
+}
+
+.userInfo img {
+  width: 125px;
+  height: 125px;
+  border-radius: 50%;
+}
+
+.info {
+  display: flex;
+  gap: 24px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 12px;
+  margin: 0 12px;
+}
+
+@media (max-width: 720px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

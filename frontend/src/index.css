@@ -9,7 +9,9 @@ a {
   text-decoration: inherit;
   color: inherit;
 
+  display: inline-block;
   padding: 6px 12px;
+  margin: 12px 0;
   background-color: #5353ff;
   color: white;
   border-radius: 4px;
