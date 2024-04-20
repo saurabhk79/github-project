@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
@@ -23,7 +24,6 @@ const UserInfo: React.FC = () => {
   };
 
   useEffect(() => {
-    console.log(params.user);
     setLoading(true);
     getSetUser();
     setLoading(false);

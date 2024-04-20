@@ -15,7 +15,6 @@ const Followers: React.FC = () => {
     const followers = await axios.get(
       "https://api.github.com/users/" + params.user + "/followers"
     );
-    console.log(followers);
 
     setFollowersData(followers.data);
   };
