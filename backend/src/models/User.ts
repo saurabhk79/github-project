@@ -1,29 +1,29 @@
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema(
-  {
-    userId: mongoose.Schema.Types.UUID,
-    username: {
-      type: String,
-      required: true,
-      unique: true,
+    {
+        login: {
+            type: String,
+            required: true,
+            unique: true,
+        },
+        avatar_url: String,
+        followers_url: String,
+        following_url: String,
+        repos_url: String,
+        email: String,
+        type: String,
+        name: String,
+        company: String,
+        blog: String,
+        location: String,
+        bio: String,
+        public_repos: Number,
+        friends: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
     },
-    email:String,
-    avatarURL: String,
-    type: String,
-    name: String,
-    company: String,
-    blog: String,
-    location: String,
-    bio: String,
-    reposCount: Number,
-    friends: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
-    createdAt: mongoose.Schema.Types.Date,
-    updatedAt: mongoose.Schema.Types.Date,
-  },
-  {
-    timestamps: true,
-  }
+    {
+        timestamps: true,
+    }
 );
 
 const User = mongoose.model("User", userSchema);
