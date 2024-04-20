@@ -40,8 +40,9 @@ export const saveUser = async (req: Request, res: Response) => {
             email: data.email,
             bio: data.bio,
             public_repos: data.public_repos,
-            followers: data.followers,
-            following: data.following,
+            repos_url: data.repos_url,
+            followers_url: data.followers_url,
+            following_url: data.following_url,
         };
 
         const newUser = await save(userData);

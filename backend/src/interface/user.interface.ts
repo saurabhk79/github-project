@@ -10,6 +10,7 @@ export interface UserInterface {
     email?: string;
     bio?: string;
     public_repos?: number;
-    followers?: String;
-    following?: String;
+    repos_url?: string;
+    followers_url?: string;
+    following_url?: string;
 }
