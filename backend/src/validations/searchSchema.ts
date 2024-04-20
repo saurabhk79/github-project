@@ -1,6 +1,5 @@
 import Joi from "joi";
 
-
 const searchSchema = Joi.object({
   username: Joi.string(),
   location: Joi.string(),
