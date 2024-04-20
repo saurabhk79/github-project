@@ -20,7 +20,9 @@ const Search: React.FC = () => {
           onChange={(e) => setUsername(e.target.value)}
           value={username}
         />
-        <button type="submit">Search</button>
+        <div className={styles.centered}>
+          <button type="submit">Search</button>
+        </div>
       </form>
     </div>
   );
