@@ -50,10 +50,7 @@ const UserInfo: React.FC = () => {
                                         {repoData.map((repo: RepoInterface) => {
                                             return (
                                                 <Link
-                                                    to={
-                                                        "/repo/" +
-                                                        repo.full_name
-                                                    }
+                                                    to={`/repo/${repo.full_name}`}
                                                     key={repo.id}
                                                 >
                                                     {repo.name}
