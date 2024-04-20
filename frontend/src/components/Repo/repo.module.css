@@ -1,0 +1,9 @@
+.repo {
+  max-width: 720px;
+  margin: auto;
+}
+
+.repo h1 {
+  color: #5353ff;
+  margin-bottom: 12px;
+}
