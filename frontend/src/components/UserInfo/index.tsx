@@ -43,6 +43,10 @@ const UserInfo: React.FC = () => {
                                 />
                                 <h1>{userData.login}</h1>
                                 <p>{userData.bio}</p>
+
+                                <Link to={`/${userData.name}/followers`}>
+                                    Followers
+                                </Link>
                             </div>
                             <div className="grid">
                                 {repoData && (

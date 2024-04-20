@@ -6,12 +6,9 @@ import { RepoInterface } from "../UserInfo/repo.interface";
 const Repo: React.FC = () => {
     const [repoData, setRepoData] = useState<RepoInterface | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
-    const query_params = new URLSearchParams();
     const params = useParams();
 
     const getSetRepo = async () => {
-        console.log(query_params.has("user"));
-
         const repoData = await axios.get(
             "https://api.github.com/repos/" + params.user + "/" + params.repo
         );
